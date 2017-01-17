@@ -282,7 +282,18 @@ angular.module('colorpicker.module', [])
                       '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                       '<colorpicker-hue><i></i></colorpicker-hue>' +
                       '<colorpicker-alpha><i></i></colorpicker-alpha>' +
-                      '<colorpicker-preview></colorpicker-preview>' +
+
+                      '<div class="colorpicker-selectors colorpicker-visible">'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i></colorpicker-palete-color>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(255, 255, 255);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(119, 119, 119);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(51, 122, 183);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(92, 184, 92);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(91, 192, 222);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(240, 173, 78);"></i>'+
+                        '<i class="colorpicker-selectors-color" style="background-color: rgb(217, 83, 79);"></i>'+
+                      '</div>'+
                       inputTemplate +
                       closeButton +
                       '</div>' +
@@ -294,7 +305,21 @@ angular.module('colorpicker.module', [])
               sliderHue = colorpickerTemplate.find('colorpicker-hue'),
               sliderSaturation = colorpickerTemplate.find('colorpicker-saturation'),
               colorpickerPreview = colorpickerTemplate.find('colorpicker-preview'),
-              pickerColorPointers = colorpickerTemplate.find('i');
+              pickerColorPointers = colorpickerTemplate.find('i'),
+              pickerPaletes = colorpickerTemplate.find('colorpicker-palete-color').find('i');
+
+          pickerPaletes.on('click', function(teste){
+            console.log("MEUDEUS", this, elem.val(), pickerPaletes.css('background-color'));
+              var newColor = pickerPaletes.css('background-color');
+
+              elem.val(newColor);
+              if (ngModel && ngModel.$modelValue !== newColor) {
+                  $scope.$apply(ngModel.$setViewValue(newColor));
+                  update(true);
+              }
+          });
+
+          console.log(pickerPaletes);
 
           $compile(colorpickerTemplate)($scope);
           colorpickerTemplate.css('min-width', parseInt(componentSize) + 29 + 'px');
@@ -313,6 +338,7 @@ angular.module('colorpicker.module', [])
                 })
               .on('keyup', function() {
                 var newColor = this.value;
+
                 elem.val(newColor);
                 if (ngModel && ngModel.$modelValue !== newColor) {
                   $scope.$apply(ngModel.$setViewValue(newColor));
