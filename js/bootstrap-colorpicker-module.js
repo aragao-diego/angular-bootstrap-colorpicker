@@ -285,14 +285,14 @@ angular.module('colorpicker.module', [])
 
                       '<div class="colorpicker-selectors colorpicker-visible">'+
                         '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i></colorpicker-palete-color>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(255, 255, 255);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(119, 119, 119);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(51, 122, 183);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(92, 184, 92);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(91, 192, 222);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(240, 173, 78);"></i>'+
-                        '<i class="colorpicker-selectors-color" style="background-color: rgb(217, 83, 79);"></i>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 255, 255);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(119, 119, 119);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(51, 122, 183);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(92, 184, 92);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(91, 192, 222);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(240, 173, 78);"></i><colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(217, 83, 79);"></i></colorpicker-palete-color>'+
                       '</div>'+
                       inputTemplate +
                       closeButton +
@@ -307,13 +307,14 @@ angular.module('colorpicker.module', [])
               colorpickerPreview = colorpickerTemplate.find('colorpicker-preview'),
               pickerColorPointers = colorpickerTemplate.find('i'),
               pickerPaletes = colorpickerTemplate.find('colorpicker-palete-color').find('i');
-
+    console.log(pickerPaletes);
           pickerPaletes.on('click', function(teste){
-            
-              var newColor = pickerPaletes.css('background-color');
-			  newColorRGB = newColor.match(/(\d+)/gi);
 
-              elem.val(rgbToHex(newColorRGB[0],newColorRGB[1],newColorRGB[2]));
+              var newColorRGB = angular.element(teste.target).css('background-color');
+			  var newColorValues = newColorRGB.match(/(\d+)/gi);
+			  var newColor = rgbToHex(parseInt(newColorValues[0]),parseInt(newColorValues[1]),parseInt(newColorValues[2]));
+
+
               if (ngModel && ngModel.$modelValue !== newColor) {
                   $scope.$apply(ngModel.$setViewValue(newColor));
                   update(true);
@@ -324,7 +325,6 @@ angular.module('colorpicker.module', [])
 			return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 		}
 
-          console.log(pickerPaletes);
 
           $compile(colorpickerTemplate)($scope);
           colorpickerTemplate.css('min-width', parseInt(componentSize) + 29 + 'px');
