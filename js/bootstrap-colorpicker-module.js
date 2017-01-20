@@ -309,15 +309,20 @@ angular.module('colorpicker.module', [])
               pickerPaletes = colorpickerTemplate.find('colorpicker-palete-color').find('i');
 
           pickerPaletes.on('click', function(teste){
-            console.log("MEUDEUS", this, elem.val(), pickerPaletes.css('background-color'));
+            
               var newColor = pickerPaletes.css('background-color');
+			  newColorRGB = newColor.match(/(\d+)/gi);
 
-              elem.val(newColor);
+              elem.val(rgbToHex(newColorRGB[0],newColorRGB[1],newColorRGB[2]));
               if (ngModel && ngModel.$modelValue !== newColor) {
                   $scope.$apply(ngModel.$setViewValue(newColor));
                   update(true);
               }
           });
+		  
+		  function rgbToHex(r, g, b) {
+			return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+		}
 
           console.log(pickerPaletes);
 
