@@ -284,15 +284,12 @@ angular.module('colorpicker.module', [])
                       '<colorpicker-alpha><i></i></colorpicker-alpha>' +
 
                       '<div class="colorpicker-selectors colorpicker-visible">'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i></colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 255, 255);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(119, 119, 119);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(51, 122, 183);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(92, 184, 92);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(91, 192, 222);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(240, 173, 78);"></i><colorpicker-palete-color>'+
-                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(217, 83, 79);"></i></colorpicker-palete-color>'+
+						'<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(255, 0, 0);"></i></colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(0, 0, 0);"></i></colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(24, 148, 0);"></i></colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(247, 227, 0);"></i></colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(0, 18, 255);"></i></colorpicker-palete-color>'+
+                        '<colorpicker-palete-color><i class="colorpicker-selectors-color" style="background-color: rgb(108, 108, 108);"></i></colorpicker-palete-color>'+
                       '</div>'+
                       inputTemplate +
                       closeButton +
